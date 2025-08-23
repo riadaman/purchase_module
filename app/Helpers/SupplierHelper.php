@@ -22,6 +22,11 @@ class SupplierHelper
         return Supplier::all();
     }
 
+    public static function getPaginatedSuppliers($perPage = 10)
+    {
+        return Supplier::paginate($perPage);
+    }
+
     public static function findSupplier($id): ?Supplier
     {
         return Supplier::find($id);

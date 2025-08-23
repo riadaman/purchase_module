@@ -67,6 +67,12 @@
                     @else
                         <p>No suppliers found.</p>
                     @endif
+                    
+                    @if($suppliers->hasPages())
+                        <div class="mt-4">
+                            {{ $suppliers->links('custom.pagination') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

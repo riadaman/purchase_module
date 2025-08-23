@@ -13,7 +13,7 @@ class SupplierController extends Controller
     public function index()
     {
         try {
-            $suppliers = SupplierHelper::getAllSuppliers();
+            $suppliers = SupplierHelper::getPaginatedSuppliers(10);
             return view('suppliers.index', compact('suppliers'));
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Failed to load suppliers: ' . $e->getMessage());
