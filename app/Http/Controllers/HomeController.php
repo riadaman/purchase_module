@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Supplier;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+      public function index()
     {
-        return view('home');
+        $totalSuppliers = Supplier::count();
+        $totalPurchaseOrders = 0; // Placeholder
+        $totalPendingOrders = 0; // Placeholder
+        
+        return view('dashboard', compact('totalSuppliers', 'totalPurchaseOrders', 'totalPendingOrders'));
     }
 }

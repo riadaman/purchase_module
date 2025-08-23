@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Helpers;
+
+use App\Models\Supplier;
+
+class SupplierHelper
+{
+    public static function createSupplier(array $data): Supplier
+    {
+        return Supplier::create([
+            'name' => $data['name'],
+            'number' => $data['number'],
+            'email' => $data['email'],
+            'address' => $data['address'],
+            'status' => isset($data['status']) ? true : false
+        ]);
+    }
+}
