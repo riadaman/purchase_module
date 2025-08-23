@@ -8,7 +8,12 @@
         <!-- Main Content -->
         <div class="col-md-9 col-lg-10" style="margin-left: 16.66%; padding: 20px;">
             <div class="card">
-                <div class="card-header">Supplier List</div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Supplier List</span>
+                    <a href="{{ route('suppliers.create') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Create Supplier
+                    </a>
+                </div>
                 <div class="card-body">
                     @if(session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
