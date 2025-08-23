@@ -68,9 +68,16 @@
                         <p>No suppliers found.</p>
                     @endif
                     
-                    @if($suppliers->hasPages())
+                    @if($suppliers->total() >= 1)
                         <div class="mt-4">
-                            {{ $suppliers->links('custom.pagination') }}
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-muted">
+                                    Showing {{ $suppliers->firstItem() ?? 0 }} to {{ $suppliers->lastItem() ?? 0 }} of {{ $suppliers->total() }} results
+                                </div>
+                                @if($suppliers->hasPages())
+                                    {{ $suppliers->links('custom.pagination') }}
+                                @endif
+                            </div>
                         </div>
                     @endif
                 </div>

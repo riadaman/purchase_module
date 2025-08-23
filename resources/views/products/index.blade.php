@@ -62,9 +62,16 @@
                         <p>No products found.</p>
                     @endif
                     
-                    @if($products->hasPages())
+                    @if($products->total() >= 1)
                         <div class="mt-4">
-                            {{ $products->links('custom.pagination') }}
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-muted">
+                                    Showing {{ $products->firstItem() ?? 0 }} to {{ $products->lastItem() ?? 0 }} of {{ $products->total() }} results
+                                </div>
+                                @if($products->hasPages())
+                                    {{ $products->links('custom.pagination') }}
+                                @endif
+                            </div>
                         </div>
                     @endif
                 </div>
