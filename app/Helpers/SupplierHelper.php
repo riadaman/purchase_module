@@ -16,4 +16,9 @@ class SupplierHelper
             'status' => isset($data['status']) ? true : false
         ]);
     }
+
+    public static function getAllSuppliers()
+    {
+        return Supplier::all();
+    }
 }

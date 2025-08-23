@@ -10,6 +10,9 @@
             <div class="card">
                 <div class="card-header">Create Supplier</div>
                 <div class="card-body">
+                    @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                     <form action="{{ route('suppliers.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
