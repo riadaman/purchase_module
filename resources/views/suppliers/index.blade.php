@@ -44,7 +44,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-primary me-1" title="Edit">
+                                            <a href="{{ route('suppliers.edit', $supplier->id) }}" class="btn btn-sm btn-primary me-1" title="Edit">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <form action="#" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this supplier?')">
