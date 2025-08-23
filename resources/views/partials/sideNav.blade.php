@@ -26,6 +26,16 @@
                     <li><a class="dropdown-item" href="{{ route('products.index') }}">List</a></li>
                 </ul>
             </div>
+            <!-- Purchase Dropdown -->
+            <div class="dropdown">
+                <a class="list-group-item list-group-item-action bg-dark text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Purchase
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('purchase-orders.create') }}">Purchase Order</a></li>
+                    <li><a class="dropdown-item" href="{{ route('purchase-orders.index') }}">Purchase Order List</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

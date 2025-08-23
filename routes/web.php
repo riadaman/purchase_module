@@ -25,4 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+    
+    Route::get('/purchase-orders/create', [App\Http\Controllers\PurchaseOrderController::class, 'create'])->name('purchase-orders.create');
+    Route::post('/purchase-orders', [App\Http\Controllers\PurchaseOrderController::class, 'store'])->name('purchase-orders.store');
+    Route::get('/purchase-orders/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'show'])->name('purchase-orders.show');
+    Route::get('/purchase-orders', [App\Http\Controllers\PurchaseOrderController::class, 'index'])->name('purchase-orders.index');
 });
