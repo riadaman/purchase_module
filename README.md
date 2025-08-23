@@ -1,61 +1,197 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Purchase Module
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive Laravel-based purchase management system for handling suppliers, products, and purchase orders with a clean, responsive interface.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🏢 Supplier Management
+- Create, edit, and delete suppliers
+- Supplier listing with pagination and filters
+- Supplier status management (Active/Inactive)
+- Form validation with error handling
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 📦 Product Management
+- Product CRUD operations
+- Product status management
+- Paginated product listings
+- Search and filter capabilities
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛒 Purchase Order Management
+- Create purchase orders with multiple items
+- Dynamic product addition to orders
+- Real-time total calculations
+- Purchase order listing with filters (supplier, date range)
+- Detailed purchase order view with print functionality
+- Professional printable purchase order documents
 
-## Learning Laravel
+## Technology Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Framework**: Laravel 11
+- **Frontend**: Bootstrap 5, Font Awesome
+- **Database**: MySQL
+- **Authentication**: Laravel Breeze
+- **Architecture**: MVC with Helper Classes
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone the repository**
+```bash
+git clone git@github.com:riadaman/purchase_module.git
+cd purchase_module
+```
 
-## Laravel Sponsors
+2. **Install dependencies**
+```bash
+composer install
+npm install && npm run build
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Environment setup**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-### Premium Partners
+4. **Database configuration**
+Update `.env` file with your database credentials:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=purchase_module
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+5. **Run migrations**
+```bash
+php artisan migrate
+```
+
+6. **Start the server**
+```bash
+php artisan serve
+```
+
+## Database Schema
+
+### Tables
+- **users** - User authentication
+- **suppliers** - Supplier information
+- **products** - Product catalog
+- **purchase_orders** - Purchase order headers
+- **purchase_order_items** - Purchase order line items
+
+### Key Relationships
+- Purchase Order → Supplier (Many-to-One)
+- Purchase Order → Purchase Order Items (One-to-Many)
+- Purchase Order Item → Product (Many-to-One)
+
+## Project Structure
+
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── SupplierController.php
+│   │   ├── ProductController.php
+│   │   └── PurchaseOrderController.php
+│   └── Requests/
+│       ├── SupplierRequest.php
+│       ├── ProductRequest.php
+│       └── PurchaseOrderRequest.php
+├── Helpers/
+│   ├── SupplierHelper.php
+│   ├── ProductHelper.php
+│   └── PurchaseHelper.php
+└── Models/
+    ├── Supplier.php
+    ├── Product.php
+    ├── PurchaseOrder.php
+    └── PurchaseOrderItem.php
+
+resources/views/
+├── suppliers/
+├── products/
+├── purchases/
+├── partials/
+└── layouts/
+```
+
+## Key Features
+
+### 🎨 Responsive Design
+- Mobile-first responsive layout
+- Clean card-based UI
+- Consistent styling with custom CSS
+- Print-optimized layouts
+
+### 🔍 Advanced Filtering
+- Supplier-based filtering
+- Date range filtering
+- Pagination with filter preservation
+- Search capabilities
+
+### 📊 Business Logic
+- Automatic total calculations
+- Database transactions for data integrity
+- Comprehensive error handling
+- Form validation with custom messages
+
+### 🖨️ Print Functionality
+- Professional purchase order documents
+- Print-optimized CSS
+- Clean, business-ready layouts
+
+## Usage
+
+### Creating a Purchase Order
+1. Navigate to Purchase → Purchase Order
+2. Select supplier and add products dynamically
+3. Set quantities and unit prices
+4. System automatically calculates totals
+5. Save to create purchase order
+
+### Managing Suppliers/Products
+1. Use sidebar navigation to access modules
+2. Create, edit, or delete records
+3. Use filters to find specific records
+4. Pagination handles large datasets
+
+## API Endpoints
+
+### Suppliers
+- `GET /suppliers` - List suppliers
+- `GET /suppliers/create` - Create form
+- `POST /suppliers` - Store supplier
+- `GET /suppliers/{id}/edit` - Edit form
+- `PUT /suppliers/{id}` - Update supplier
+
+### Products
+- `GET /products` - List products
+- `GET /products/create` - Create form
+- `POST /products` - Store product
+- `GET /products/{id}/edit` - Edit form
+- `PUT /products/{id}` - Update product
+- `DELETE /products/{id}` - Delete product
+
+### Purchase Orders
+- `GET /purchase-orders` - List orders
+- `GET /purchase-orders/create` - Create form
+- `POST /purchase-orders` - Store order
+- `GET /purchase-orders/{id}` - View details
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+For support or questions, please create an issue in the GitHub repository.
