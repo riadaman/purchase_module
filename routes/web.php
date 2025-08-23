@@ -18,4 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/suppliers/{id}/edit', [App\Http\Controllers\SupplierController::class, 'edit'])->name('suppliers.edit');
     Route::put('/suppliers/{id}', [App\Http\Controllers\SupplierController::class, 'update'])->name('suppliers.update');
     Route::get('/suppliers', [App\Http\Controllers\SupplierController::class, 'index'])->name('suppliers.index');
+    
+    Route::get('/products/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 });

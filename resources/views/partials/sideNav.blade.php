@@ -22,8 +22,8 @@
                     Product
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Create</a></li>
-                    <li><a class="dropdown-item" href="#">List</a></li>
+                    <li><a class="dropdown-item" href="{{ route('products.create') }}">Create</a></li>
+                    <li><a class="dropdown-item" href="{{ route('products.index') }}">List</a></li>
                 </ul>
             </div>
         </div>
